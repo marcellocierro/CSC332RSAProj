@@ -1,15 +1,5 @@
-#!/usr/bin/python
-import argparse
-import sys
 import random as random
 from fractions import gcd
-
-def options():
-    parser = argparse.ArgumentParser()
-    parser.add_argument('-message', type = str, help = 'The Message to Encrpyt')
-
-    args = parser.parse_args()
-    return args
 
 def is_prime(n):
   if n == 2 or n == 3: return True
@@ -55,18 +45,16 @@ def pollard_rho(n):
             d = gcd((x-y) % n, n)
         if d!= n:
             return d
-def main():
-    options()
-    message = options().message
 
+def main():
     #n = 8051
     n = 10834948153
     d = pollard_rho(n)
     p = d
+    q = (n/d)
 
-    print message
+    print p,q
 
 if __name__ == "__main__":
     main()
-
 

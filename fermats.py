@@ -10,7 +10,7 @@ def fermats(n):
         if (s.is_integer() == True):
             break
 def main():
-    fermats(1383225268969)
+    fermats(8051)
 
 if __name__ == "__main__":
     main()
