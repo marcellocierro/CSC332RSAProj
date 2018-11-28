@@ -7,12 +7,12 @@ def rsa(p, q):
     n = p * q
 
     g = factors(n)
-
     print g
 
     phi = (p-1) * (q-1)
 
     print "phi(n) = ", phi
+    return phi
 
 def main():
     p = int(raw_input("Enter a prime number: "))
