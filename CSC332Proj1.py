@@ -4,6 +4,7 @@ import sys
 import random as random
 from fractions import gcd
 import math as math
+import time as time
 
 def options():
     parser = argparse.ArgumentParser()
@@ -84,8 +85,15 @@ def main():
     options()
     message = options().message
 
+    start_time = time.time()
+
+
     #n = 8051
-    #`n = 10834948153
+    #n = 10834948153
+    #n = 1923023412357
+    #n = 9999999999973
+    #n = 1231232134590149
+    n = 32193802514424469
     #n = 51923
     d = pollard_rho(n)
     p = d
@@ -93,11 +101,13 @@ def main():
 
     print p, q
 
-    bruteForceFactors = bruteForce_prime_factors(n)
+    #bruteForceFactors = bruteForce_prime_factors(n)
 
-    print bruteForceFactors
+    #print bruteForceFactors
 
-    print message
+    elapsed_time = time.time() - start_time
+    print time.strftime("%H:%M:%S", time.gmtime(elapsed_time))
+    #print message
 
 if __name__ == "__main__":
     main()
