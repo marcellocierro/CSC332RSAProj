@@ -57,6 +57,19 @@ def pollard_rho(n):
         if d!= n:
             return d
 
+def bruteForce_prime_factors(n):
+    i = 2
+    factors = []
+    while i * i <= n:
+        if n % i:
+            i += 1
+        else:
+            n //= i
+            factors.append(i)
+    if n > 1:
+        factors.append(n)
+    return factors
+
 def fermats(n):
     i = 0
     while(True):
@@ -72,16 +85,20 @@ def main():
     message = options().message
 
     #n = 8051
-    n = 10834948153
+    #`n = 10834948153
+    #n = 51923
     d = pollard_rho(n)
     p = d
     q = n/d
 
     print p, q
 
+    bruteForceFactors = bruteForce_prime_factors(n)
+
+    print bruteForceFactors
+
     print message
 
 if __name__ == "__main__":
     main()
-
 
