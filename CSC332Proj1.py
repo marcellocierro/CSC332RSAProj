@@ -79,6 +79,7 @@ def fermats(n):
         print "i: %s, t: %s, s: %s" % (i, t, s)
         i +=1
         if (s.is_integer() == True):
+            return ((t+s), (t-s))
             break
 
 def main():
@@ -95,15 +96,19 @@ def main():
     #n = 1231232134590149
     n = 32193802514424469
     #n = 51923
-    d = pollard_rho(n)
-    p = d
-    q = n/d
+    #d = pollard_rho(n)
+    #p = d
+    #q = n/d
 
-    print p, q
+    #print p, q
 
     #bruteForceFactors = bruteForce_prime_factors(n)
 
     #print bruteForceFactors
+
+    pq = fermats(n)
+
+    print pq
 
     elapsed_time = time.time() - start_time
     print time.strftime("%H:%M:%S", time.gmtime(elapsed_time))
