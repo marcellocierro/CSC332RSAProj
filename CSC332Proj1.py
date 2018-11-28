@@ -63,6 +63,9 @@ def main():
     n = 10834948153
     d = pollard_rho(n)
     p = d
+    q = n/d
+
+    print p, q
 
     print message
 
