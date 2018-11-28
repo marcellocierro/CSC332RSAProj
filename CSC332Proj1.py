@@ -3,6 +3,7 @@ import argparse
 import sys
 import random as random
 from fractions import gcd
+import math as math
 
 def options():
     parser = argparse.ArgumentParser()
@@ -55,6 +56,17 @@ def pollard_rho(n):
             d = gcd((x-y) % n, n)
         if d!= n:
             return d
+
+def fermats(n):
+    i = 0
+    while(True):
+        t = math.ceil(math.sqrt(n)) + i
+        s = math.sqrt((t**2) - n)
+        print "i: %s, t: %s, s: %s" % (i, t, s)
+        i +=1
+        if (s.is_integer() == True):
+            break
+
 def main():
     options()
     message = options().message
