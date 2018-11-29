@@ -1,5 +1,6 @@
 import random as random
 from fractions import gcd
+from memory_profiler import memory_usage
 
 def is_prime(n):
   if n == 2 or n == 3: return True
@@ -48,8 +49,13 @@ def pollard_rho(n):
 
 def main():
     #n = 8051
-    n = 10834948153
+    #n = 10834948153
+    n = 32193802514424469
     d = pollard_rho(n)
+    mem_usage = memory_usage((pollard_rho, (n,)))
+    print ('Memory usage (in chunks of .1 seconds): %s' % mem_usage)
+    print ('Maximum memory usage: %s' % max(mem_usage))
+    print ('Total memory over cycle: %s' % sum(mem_usage))
     p = d
     q = (n/d)
 

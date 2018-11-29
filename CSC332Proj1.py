@@ -5,6 +5,7 @@ import random as random
 from fractions import gcd
 import math as math
 import time as time
+from memory_profiler import memory_usage
 
 def options():
     parser = argparse.ArgumentParser()
@@ -82,12 +83,13 @@ def fermats(n):
             return ((t+s), (t-s))
             break
 
+def get_phi(p, q):
+    phi = (p-1) * (q-1)
+    return phi
+
 def main():
     options()
     message = options().message
-
-
-
 
     #n = 8051
     #n = 10834948153
@@ -97,28 +99,50 @@ def main():
     n = 32193802514424469
     #n = 51923
 
+    ################## Pollard
+    print 'Beginning Pollards Factorization, Tracking time and memory footprint'
 
     start_time = time.time()
     d = pollard_rho(n)
     p = d
     q = n/d
 
+    mem_usage = memory_usage((pollard_rho, (n,)))
+    print ('Memory usage (in chunks of .1 seconds): %s' % mem_usage)
+    print ('Maximum memory usage: %s' % max(mem_usage))
+    print ('Total memory over cycle: %s' % sum(mem_usage))
     print p, q
 
     elapsed_time = time.time() - start_time
     print time.strftime("%H:%M:%S", time.gmtime(elapsed_time))
 
 
+    ################## Brute Force
+    print 'Beginning Brute Force, Tracking time and memory footprint'
+
     start_time = time.time()
     bruteForceFactors = bruteForce_prime_factors(n)
+
+    mem_usage = memory_usage((bruteForce_prime_factors, (n,)))
+    print ('Memory usage (in chunks of .1 seconds): %s' % mem_usage)
+    print ('Maximum memory usage: %s' % max(mem_usage))
+    print ('Total memory over cycle: %s' % sum(mem_usage))
 
     print bruteForceFactors
     elapsed_time = time.time() - start_time
     print time.strftime("%H:%M:%S", time.gmtime(elapsed_time))
 
 
+    ################## Fermats
+    print 'Beginning Fermats, Tracking time and memory footprint'
+
     start_time = time.time()
     pq = fermats(n)
+
+    mem_usage = memory_usage((fermats, (n,)))
+    print ('Memory usage (in chunks of .1 seconds): %s' % mem_usage)
+    print ('Maximum memory usage: %s' % max(mem_usage))
+    print ('Total memory over cycle: %s' % sum(mem_usage))
 
     print pq
 
