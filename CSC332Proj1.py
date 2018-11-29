@@ -86,7 +86,7 @@ def main():
     options()
     message = options().message
 
-    start_time = time.time()
+
 
 
     #n = 8051
@@ -96,22 +96,35 @@ def main():
     #n = 1231232134590149
     n = 32193802514424469
     #n = 51923
-    #d = pollard_rho(n)
-    #p = d
-    #q = n/d
 
-    #print p, q
 
-    #bruteForceFactors = bruteForce_prime_factors(n)
+    start_time = time.time()
+    d = pollard_rho(n)
+    p = d
+    q = n/d
 
-    #print bruteForceFactors
+    print p, q
 
+    elapsed_time = time.time() - start_time
+    print time.strftime("%H:%M:%S", time.gmtime(elapsed_time))
+
+
+    start_time = time.time()
+    bruteForceFactors = bruteForce_prime_factors(n)
+
+    print bruteForceFactors
+    elapsed_time = time.time() - start_time
+    print time.strftime("%H:%M:%S", time.gmtime(elapsed_time))
+
+
+    start_time = time.time()
     pq = fermats(n)
 
     print pq
 
     elapsed_time = time.time() - start_time
     print time.strftime("%H:%M:%S", time.gmtime(elapsed_time))
+
     #print message
 
 if __name__ == "__main__":
