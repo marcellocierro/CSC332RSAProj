@@ -77,7 +77,7 @@ def fermats(n):
     while(True):
         t = math.ceil(math.sqrt(n)) + i
         s = math.sqrt((t**2) - n)
-        print "i: %s, t: %s, s: %s" % (i, t, s)
+    #    print "i: %s, t: %s, s: %s" % (i, t, s)
         i +=1
         if (s.is_integer() == True):
             return ((t+s), (t-s))
@@ -96,7 +96,8 @@ def main():
     #n = 1923023412357
     #n = 9999999999973
     #n = 1231232134590149
-    n = 32193802514424469
+    n = 2778290744723171
+    #n = 32193802514424469
     #n = 51923
 
     ################## Pollard
