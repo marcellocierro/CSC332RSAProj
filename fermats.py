@@ -5,12 +5,14 @@ def fermats(n):
     while(True):
         t = math.ceil(math.sqrt(n)) + i
         s = math.sqrt((t**2) - n)
-        print "i: %s, t: %s, s: %s" % (i, t, s)
         i +=1
         if (s.is_integer() == True):
+            p = t - s
+            q = t + s
+            print p,q
             break
 def main():
-    fermats(8051)
+    fermats(366180471158482153)
 
 if __name__ == "__main__":
     main()
